@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مطعم ريحان | مأكولات شامية</title>
+<meta name="description" content="مطعم ريحان: مأكولات شامية تُحضَّر يوميا. تصفّح القائمة واحجز طاولتك.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0F3D3E; --teal-2:#176163; --saffron:#E3A72F; --paper:#F6F8F7; --ink:#1B2A2B; --muted:#5B6B6C; --line:#D5DEDC;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:'Tajawal',Tahoma,sans-serif;background:var(--paper);color:var(--ink);line-height:1.8;font-size:17px}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--saffron);outline-offset:3px}
+.wrap{max-width:1040px;margin:auto;padding:0 20px}
+/* header */
+header{background:var(--teal);color:#fff;position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Aref Ruqaa',serif;font-size:28px;text-decoration:none;color:var(--saffron)}
+nav{display:flex;gap:22px}
+nav a{text-decoration:none;font-weight:500;opacity:.9}
+nav a:hover{opacity:1;color:var(--saffron)}
+/* hero */
+.hero{background:var(--teal);color:#fff;padding:72px 0 88px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:10px;background:repeating-linear-gradient(90deg,var(--saffron) 0 24px,var(--teal-2) 24px 48px)}
+.hero h1{font-family:'Aref Ruqaa',serif;font-size:clamp(44px,8vw,84px);line-height:1.25}
+.hero p{max-width:520px;margin:16px 0 28px;opacity:.9;font-size:19px}
+.btn{display:inline-block;background:var(--saffron);color:#1a1405;font:700 17px 'Tajawal',sans-serif;padding:12px 28px;border:0;border-radius:6px;text-decoration:none;cursor:pointer}
+.btn:hover{background:#f0b942}
+.btn.ghost{background:transparent;color:#fff;border:2px solid #ffffff66;margin-inline-start:10px}
+.hours{margin-top:36px;font-size:15px;opacity:.8}
+/* sections */
+section{padding:64px 0}
+h2{font-family:'Aref Ruqaa',serif;font-size:38px;color:var(--teal);margin-bottom:8px}
+.sub{color:var(--muted);margin-bottom:28px}
+/* menu */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.tab{font:500 16px 'Tajawal',sans-serif;padding:8px 20px;border-radius:99px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+.tab[aria-selected="true"]{background:var(--teal);color:#fff;border-color:var(--teal)}
+.items{list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:0 48px}
+.item{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:16px 0;border-bottom:1px dashed var(--line)}
+.item b{font-size:18px}
+.item span{color:var(--teal-2);font-weight:700}
+.item small{grid-column:1/-1;color:var(--muted);font-size:15px;line-height:1.6}
+/* about */
+.about{background:#fff;border-block:1px solid var(--line)}
+.about .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center}
+.stats{display:grid;gap:14px}
+.stat{border-inline-start:4px solid var(--saffron);padding:4px 16px}
+.stat b{display:block;font-size:22px;color:var(--teal)}
+/* booking */
+.book{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+form{display:grid;gap:14px}
+label{font-weight:500;display:grid;gap:4px}
+input,select{font:inherit;padding:11px 12px;border:1.5px solid var(--line);border-radius:6px;background:#fff;width:100%}
+input:focus,select:focus{border-color:var(--teal-2)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.err{color:#B3261E;font-size:14px;min-height:20px}
+.ok{background:#E4F2EA;border:1px solid #9FCFB2;border-radius:8px;padding:18px;display:none}
+.info p{margin-bottom:10px}
+footer{background:var(--teal);color:#ffffffcc;text-align:center;padding:22px;font-size:15px}
+/* mobile */
+@media (max-width:760px){
+  nav{gap:14px;font-size:15px}
+  .items,.about .wrap,.book{grid-template-columns:1fr}
+  .about .wrap,.book{gap:28px}
+  .hero{padding:48px 0 64px}
+  .btn.ghost{margin:10px 0 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">ريحان</a>
+    <nav aria-label="التنقل الرئيسي">
+      <a href="#menu">القائمة</a>
+      <a href="#about">عن المطعم</a>
+      <a href="#book">احجز</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <h1>مائدة شامية<br>كما في البيت</h1>
+      <p>مأكولات تُحضَّر كل صباح من مكونات طازجة، من الحمص والمتبّل إلى الكبة والمشاوي على الفحم.</p>
+      <a class="btn" href="#book">احجز طاولة</a>
+      <a class="btn ghost" href="#menu">تصفّح القائمة</a>
+      <p class="hours">نفتح يوميا من 12 ظهرا حتى 11 مساء</p>
+    </div>
+  </div>
+
+  <section id="menu">
+    <div class="wrap">
+      <h2>القائمة</h2>
+      <p class="sub">الأسعار بالدولار وتشمل الضريبة.</p>
+      <div class="tabs" role="tablist" aria-label="أقسام القائمة" id="tabs"></div>
+      <ul class="items" id="items"></ul>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="wrap">
+      <div>
+        <h2>عن المطعم</h2>
+        <p>بدأ ريحان من مطبخ عائلي صغير. نعدّ الوصفات نفسها بالطريقة التي تعلمناها: عجين يُخبز كل يوم، وبهارات تُطحن عندنا، وزيت زيتون نختاره بأنفسنا.</p>
+        <p style="margin-top:12px">نستقبل العائلات والمجموعات، ولدينا قاعة مخصصة للمناسبات حتى 40 شخصا.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>12 سنة</b>من الخبرة في المطبخ الشامي</div>
+        <div class="stat"><b>60 طبقا</b>في قائمة تتغير مع الموسم</div>
+        <div class="stat"><b>خيارات نباتية</b>في كل قسم من القائمة</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="book">
+    <div class="wrap book">
+      <div>
+        <h2>احجز طاولتك</h2>
+        <p class="sub">أرسل الطلب وسنؤكد الحجز بمكالمة قصيرة.</p>
+        <form id="form" novalidate>
+          <label>الاسم
+            <input name="name" autocomplete="name" required>
+          </label>
+          <label>رقم الهاتف
+            <input name="phone" type="tel" inputmode="tel" autocomplete="tel" dir="ltr" style="text-align:right" required>
+          </label>
+          <div class="row">
+            <label>التاريخ
+              <input name="date" type="date" required>
+            </label>
+            <label>الوقت
+              <select name="time" required>
+                <option value="">اختر</option>
+                <option>1:00 م</option><option>2:00 م</option><option>3:00 م</option>
+                <option>6:00 م</option><option>7:00 م</option><option>8:00 م</option><option>9:00 م</option>
+              </select>
+            </label>
+          </div>
+          <label>عدد الأشخاص
+            <select name="guests" required>
+              <option value="">اختر</option>
+              <option>1-2</option><option>3-4</option><option>5-6</option><option>7 أو أكثر</option>
+            </select>
+          </label>
+          <div class="err" id="err" role="alert"></div>
+          <button class="btn" type="submit">إرسال طلب الحجز</button>
+        </form>
+        <div class="ok" id="ok" role="status"></div>
+      </div>
+      <div class="info">
+        <h2>الموقع</h2>
+        <p class="sub">نحن في وسط المدينة، بجانب الحديقة العامة.</p>
+        <p><b>العنوان:</b> شارع الجلاء، المبنى 14</p>
+        <p><b>الهاتف:</b> <span dir="ltr">+000 000 000 000</span></p>
+        <p><b>الدوام:</b> يوميا 12 ظهرا – 11 مساء</p>
+        <p><b>التوصيل:</b> متاح ضمن 5 كم</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© 2026 مطعم ريحان. موقع تجريبي لعرض الأعمال.</footer>
+
+<script>
+const MENU = {
+  "المقبلات": [
+    ["حمص بالطحينة","حمص ناعم مع زيت الزيتون والبابريكا",3.5],
+    ["متبّل باذنجان","باذنجان مشوي على الفحم مع الطحينة والثوم",4],
+    ["فتوش","خضار طازجة وخبز محمص وصلصة الرمان",4.5],
+    ["ورق عنب","محشي بالأرز والخضار وزيت الزيتون (نباتي)",5]
+  ],
+  "الأطباق الرئيسية": [
+    ["مشاوي مشكلة","كباب وشيش طاووق وكفتة مع الخضار المشوية",14],
+    ["كبة مقلية","قرص برغل محشو باللحم والجوز، 4 قطع",8],
+    ["مجدّرة","عدس وأرز مع البصل المقرمش (نباتي)",7],
+    ["شاورما دجاج","في خبز صاج مع التوم والمخلل",6.5]
+  ],
+  "الحلويات": [
+    ["كنافة نابلسية","جبنة طرية وقطر خفيف وفستق حلبي",5],
+    ["بقلاوة","طبقات رقيقة مع الفستق والسمن البلدي",4.5],
+    ["معمول بالتمر","يقدَّم دافئا مع كوب شاي",3.5]
+  ],
+  "المشروبات": [
+    ["شاي بالنعناع","إبريق صغير",2],
+    ["قهوة عربية","مع الهيل",2.5],
+    ["ليمون بالنعناع","عصير طازج",3],
+    ["عيران","لبن مخفوق بارد",2.5]
+  ]
+};
+const tabs = document.getElementById('tabs');
+const list = document.getElementById('items');
+function show(cat){
+  [...tabs.children].forEach(b => b.setAttribute('aria-selected', b.textContent === cat));
+  list.innerHTML = '';
+  MENU[cat].forEach(([name, desc, price]) => {
+    const li = document.createElement('li');
+    li.className = 'item';
+    li.innerHTML = '<b></b><span></span><small></small>';
+    li.children[0].textContent = name;
+    li.children[1].textContent = '$' + price.toFixed(2);
+    li.children[2].textContent = desc;
+    list.appendChild(li);
+  });
+}
+Object.keys(MENU).forEach((cat, i) => {
+  const b = document.createElement('button');
+  b.className = 'tab'; b.type = 'button'; b.role = 'tab'; b.textContent = cat;
+  b.onclick = () => show(cat);
+  tabs.appendChild(b);
+  if (i === 0) show(cat);
+});
+
+// booking form
+const form = document.getElementById('form');
+const err = document.getElementById('err');
+const ok = document.getElementById('ok');
+const dateInput = form.elements.date;
+dateInput.min = new Date().toISOString().split('T')[0];
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  err.textContent = '';
+  const d = Object.fromEntries(new FormData(form));
+  if (!d.name.trim()) return err.textContent = 'اكتب اسمك.';
+  if (!/^\+?[0-9\s-]{7,15}$/.test(d.phone.trim())) return err.textContent = 'أدخل رقم هاتف صحيحا، أرقام فقط.';
+  if (!d.date) return err.textContent = 'اختر تاريخ الحجز.';
+  if (!d.time) return err.textContent = 'اختر وقت الحجز.';
+  if (!d.guests) return err.textContent = 'اختر عدد الأشخاص.';
+  ok.style.display = 'block';
+  ok.textContent = 'تم استلام طلبك يا ' + d.name.trim() + '. سنتصل بك لتأكيد حجز ' + d.guests + ' أشخاص يوم ' + d.date + ' الساعة ' + d.time + '.';
+  form.style.display = 'none';
+});
+</script>
+</body>
+</html>
